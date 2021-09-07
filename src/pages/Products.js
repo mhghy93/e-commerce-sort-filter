@@ -35,6 +35,24 @@ const Products = () => {
     }
   };
 
+  const filterProduct = (e) => {
+    if (e.target.value !== 'All') {
+      if (e.target.checked) {
+        let filteredProduct = products.filter((product) => {
+          return product.category === e.target.value;
+        });
+        setLaptopProducts(filteredProduct);
+        document.getElementById('defaultSort').selected = true;
+      } else {
+        setLaptopProducts(products);
+        document.getElementById('defaultSort').selected = true;
+      }
+    } else {
+      setLaptopProducts(products);
+      document.getElementById('defaultSort').selected = true;
+    }
+  };
+
   return (
     <Fragment>
       <Container>
@@ -42,7 +60,7 @@ const Products = () => {
         <div className="mt-5 d-flex justify-content-end">
           <Form.Group controlId="formGridState">
             <Form.Select onClick={sortPrice} defaultValue="Sort By">
-              <option>Sort By</option>
+              <option id="defaultSort">Sort By</option>
               <option value="priceLowToHigh">Price - Low to High</option>
               <option value="priceHighToLow">Price - High to Low</option>
             </Form.Select>
@@ -57,19 +75,36 @@ const Products = () => {
             <div className="mt-5">
               <h5 className="font-weght-bold">Laptop Category</h5>
               <Form.Check
-                type="checkbox"
+                type="radio"
+                id="all"
+                label="All"
+                name="category"
+                value="All"
+                onChange={filterProduct}
+              />
+              <Form.Check
+                type="radio"
                 id="gamingLaptop"
                 label="Gaming Laptop"
+                value="Gaming Laptop"
+                name="category"
+                onChange={filterProduct}
               />
               <Form.Check
-                type="checkbox"
+                type="radio"
                 id="thinAndLightLaptop"
                 label="Thin and Light Laptop"
+                value="Thin and Light Laptop"
+                name="category"
+                onChange={filterProduct}
               />
               <Form.Check
-                type="checkbox"
+                type="radio"
                 id="businessLaptop"
                 label="Business Laptop"
+                value="Business Laptop"
+                name="category"
+                onChange={filterProduct}
               />
             </div>
             {/* Filter Products End */}
