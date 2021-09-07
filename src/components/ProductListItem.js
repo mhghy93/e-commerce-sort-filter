@@ -11,7 +11,7 @@ const ProductListItem = ({ product }) => {
           <Card.Subtitle className="mb-2 text-muted">
             {product.category}
           </Card.Subtitle>
-          <Card.Text className="text-muted">{product.price}</Card.Text>
+          <Card.Text className="text-muted">₹{product.price}</Card.Text>
         </Card.Body>
       </Card>
     </Col>
