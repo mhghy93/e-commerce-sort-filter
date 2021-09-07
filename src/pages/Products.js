@@ -59,7 +59,7 @@ const Products = () => {
         {/* Sort Products */}
         <div className="mt-5 d-flex justify-content-end">
           <Form.Group controlId="formGridState">
-            <Form.Select onClick={sortPrice} defaultValue="Sort By">
+            <Form.Select onChange={sortPrice} defaultValue="Sort By">
               <option id="defaultSort">Sort By</option>
               <option value="priceLowToHigh">Price - Low to High</option>
               <option value="priceHighToLow">Price - High to Low</option>
