@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { Container, Row, Form } from 'react-bootstrap';
+import { Container, Row, Form, Col } from 'react-bootstrap';
 import ProductListItem from '../components/ProductListItem';
 
 import { products } from '../data/product';
@@ -38,6 +38,7 @@ const Products = () => {
   return (
     <Fragment>
       <Container>
+        {/* Sort Products */}
         <div className="mt-5 d-flex justify-content-end">
           <Form.Group controlId="formGridState">
             <Form.Select onClick={sortPrice} defaultValue="Sort By">
@@ -47,11 +48,43 @@ const Products = () => {
             </Form.Select>
           </Form.Group>
         </div>
-        <Row className="mt-5">
-          {laptopProducts.map((product) => (
-            <ProductListItem key={product.id} product={product} />
-          ))}
+        {/* Sort Products End */}
+
+        {/* Products and filter */}
+        <Row>
+          <Col lg={2} sm={2}>
+            {/* Filter Products */}
+            <div className="mt-5">
+              <h5 className="font-weght-bold">Laptop Category</h5>
+              <Form.Check
+                type="checkbox"
+                id="gamingLaptop"
+                label="Gaming Laptop"
+              />
+              <Form.Check
+                type="checkbox"
+                id="thinAndLightLaptop"
+                label="Thin and Light Laptop"
+              />
+              <Form.Check
+                type="checkbox"
+                id="businessLaptop"
+                label="Business Laptop"
+              />
+            </div>
+            {/* Filter Products End */}
+          </Col>
+          <Col lg={10} sm={10}>
+            {/* Products */}
+            <Row className="mt-5">
+              {laptopProducts.map((product) => (
+                <ProductListItem key={product.id} product={product} />
+              ))}
+            </Row>
+            {/* Products End */}
+          </Col>
         </Row>
+        {/* Products and filter end */}
       </Container>
     </Fragment>
   );
